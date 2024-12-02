@@ -90,15 +90,6 @@
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
-      const API_URL = "https://spartacodingclub.shop/sparta_api/weather/seoul";
-
-      const res = await fetch(API_URL)
-        .then((res) => res.json())
-        .then((data) => data);
-
-      const { temp } = res;
-      $("#temp_span").text(`${temp}도`);
-
       const docs = await getDocs(collection(db, "movies"));
       docs.forEach((doc) => {
         const { comment, starIcon, image, title } = doc.data();
